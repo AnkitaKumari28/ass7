@@ -1,0 +1,105 @@
+<form [formGroup]="PersonForm" (ngSubmit)="submit()">
+ 
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <h1 style="margin-top:30px ;" class="h1-top"><b><u>Person Form</u></b></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+    
+        <div class="col-md-3">
+          <mat-form-field class="example-form-field" appearance="outline">
+              <mat-label>first name</mat-label>
+              <input matInput type="text" formControlName="firstname" >
+                <mat-error *ngIf="PersonForm.get('firstname')!.errors!==null && PersonForm.get('firstname')!.errors!['required']">
+                  First name is required</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-3">
+            <mat-form-field class="example-form-field" appearance="outline">
+                <mat-label>middle name</mat-label>
+                <input matInput type="text" formControlName="middlename" >
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field class="example-form-field" appearance="outline">
+                    <mat-label>last name</mat-label>
+                    <input matInput type="text" formControlName="lastname" >
+                      <mat-error *ngIf="PersonForm.get('lastname')!.errors!==null && PersonForm.get('lastname')!.errors!['required']">
+                        last name is required</mat-error>
+                  </mat-form-field>
+                </div>
+</div>
+    <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-3">
+        <mat-form-field class="example-form-field" appearance="outline"  >
+          <mat-label>Department</mat-label>
+          <mat-select type="text" formControlName="department" >
+            <mat-option *ngFor="let deptype of department" [value]="deptype.value">
+                {{deptype.value}}
+              </mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+    
+    <div class="col-md-3">
+    <mat-form-field class="example-form-field" appearance="outline"  >
+      <mat-label>Gender</mat-label>
+      <mat-select type="text" formControlName="gender" >
+        <mat-option *ngFor="let gen of gender" [value]="gen.value">
+          {{gen.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+
+    <div class="col-md-3">
+        <mat-form-field appearance="outline"  >
+            <mat-label>DOB</mat-label>
+            <input required type="date" matInput formControlName="dob" >
+            <mat-error *ngIf="PersonForm.get('dob')!.errors!==null && PersonForm.get('dob')!.errors!['required']">
+                DOB cannot be empty</mat-error>
+          </mat-form-field>
+      </div>
+        
+    </div>
+
+    <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-3">
+        <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>Address1</mat-label>
+            <input matInput type="text" formControlName="address1" >
+              <mat-error *ngIf="PersonForm.get('address1')!.errors!==null && PersonForm.get('address1')!.errors!['required']">
+                Address1 is required</mat-error>
+          </mat-form-field>
+    </div>
+    <div class="col-md-3">
+        <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>pincode</mat-label>
+            <input matInput type="number" formControlName="pincode" >
+            <mat-error *ngIf="PersonForm.get('pincode')!.errors!==null && PersonForm.get('pincode')!.errors!['required']">
+                pincode is required
+            </mat-error>
+            <mat-error *ngIf="PersonForm.get('pincode')!.errors!==null && PersonForm.get('pincode')!.errors!['min']">
+                Pincode is invalid
+            </mat-error>
+            <mat-error *ngIf="PersonForm.get('pincode')!.errors!==null && PersonForm.get('pincode')!.errors!['max']">
+                Pincode is invalid
+            </mat-error>
+        </mat-form-field>
+        </div>
+  
+    </div>
+
+    <div class="row">
+    <div class="col-md-2"></div>
+     <div class="col-md-1 ">
+        <button mat-raised-button color="primary" >Submit</button>
+    </div>
+    </div>   
+</form>
